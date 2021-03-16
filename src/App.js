@@ -51,11 +51,15 @@ function App() {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
+                        <h2 class="text-white mb-4">Who are we?</h2>
                         <p class="text-white-50">
-                            Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                            <a href="https://startbootstrap.com/theme/grayscale/">the preview page</a>
-                            . The theme is open source, and you can use it for any purpose, personal or commercial.
+                            Merge Health is a social platform dedicated to helping users better manage their health information
+                            and fully realize the value of their data by consolidating their medical records, providing key data insights,
+                            and connecting them with their peers to learn from them and to support each other's health goals. Initially, we are 
+                            offering a service to connect users with their friends while practicing daily healthy habits, but we aim 
+                            to quickly expand into ethical big data collection. Hop in 
+                            <a href="http://localhost:3002/room"> this video chat room </a> 
+                            between 4:30-5:30pm CDT if you would like to meet the team and learn more about the application.
                         </p>
                     </div>
                 </div>
