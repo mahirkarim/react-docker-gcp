@@ -90,8 +90,9 @@ function App() {
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Misty</h4>
-                                    <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                                    <h4 class="text-white">Areeb Afridi</h4>
+                                    <p class="mb-0 text-white-50">Look at the way the golden hour lights up a face that would put Michelangelo's David to shame. Of course we had to show him first.
+                                    He'd also probably want me to mention that he went to Harvard, but I won't because that's pretentious.</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
                             </div>
@@ -105,8 +106,10 @@ function App() {
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Mountains</h4>
-                                    <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
+                                    <h4 class="text-white">Sarah Stukalin</h4>
+                                    <p class="mb-0 text-white-50">Sarah studied premed at Vanderbilt University. She claims to have been inspired to form this venture 
+                                    by how gum disease predicts seemingly unrelated health outcomes, but it's rumored she just needs a reason to post up at Royal Blue
+                                    Grocery daily.</p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
                             </div>
@@ -120,8 +123,9 @@ function App() {
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Misty</h4>
-                                    <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                                    <h4 class="text-white">Mahir Karim</h4>
+                                    <p class="mb-0 text-white-50">After a long day of typing aimlessly and accomplishing little, he travels to these bushes
+                                    to graze.</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
                             </div>
@@ -156,7 +160,7 @@ function App() {
                                 <i class="fas fa-map-marked-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Address</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                                <div class="small text-black-50">1 Highland Park Village, Dallas, TX 75205</div>
                             </div>
                         </div>
                     </div>
@@ -166,7 +170,7 @@ function App() {
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                                <div class="small text-black-50"><a href="#!">TBD</a></div>
                             </div>
                         </div>
                     </div>
@@ -176,7 +180,7 @@ function App() {
                                 <i class="fas fa-mobile-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Phone</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50">+1 (555) 902-8832</div>
+                                <div class="small text-black-50">(214) 673-8778</div>
                             </div>
                         </div>
                     </div>
