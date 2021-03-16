@@ -4110,6 +4110,11 @@ input[type=button].btn-block {
   width: 100px;
 }
 
+.bigicon {
+  height: 500px;
+  width:500px;
+}
+
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,
 .navbar-expand-sm > .container-fluid,

@@ -2,6 +2,10 @@ import './App.css';
 //import VideoPage from './components/VideoPage.js' //then add <VideoPage/> tag
 import logo from './logo.svg';
 import pic from './assets/img/img2.png';
+import areeb from './assets/img/IMG_0030.jpeg'
+import sarah from './assets/img/IMG_0054.jpeg'
+import mahir from './assets/img/IMG_0048.jpeg'
+import altLogo from './assets/img/image3.jpeg'
 
 function App() {
   return (
@@ -58,7 +62,7 @@ function App() {
                             and connecting them with their peers to learn from them and to support each other's health goals. Initially, we are 
                             offering a service to connect users with their friends while practicing daily healthy habits, but we aim 
                             to quickly expand into ethical big data collection. Hop in 
-                            <a href="http://localhost:3002/room"> this video chat room </a> 
+                            <a href="https://vid.mergehealth.us/room"> this video chat room </a> 
                             between 4:30-5:30pm CDT if you would like to meet the team and learn more about the application.
                         </p>
                     </div>
@@ -70,17 +74,18 @@ function App() {
             <div class="container">
                 
                 <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="" /></div>
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" className="bigicon" src={altLogo} alt="" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Shoreline</h4>
-                            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                            <h4>Meet the team</h4>
+                            <p class="text-black-50 mb-0">We have three cofounders from diverse educational backgrounds, but each one of us is passionate about ethically managing data
+                            and improving people's lives through their health. </p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="" /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src={areeb} alt="" /></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -95,7 +100,7 @@ function App() {
                 </div>
 
                 <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="" /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src={sarah} alt="" /></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -108,6 +113,22 @@ function App() {
                         </div>
                     </div>
                 </div>
+
+                <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                    <div class="col-lg-6"><img class="img-fluid" src={mahir} alt="" /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">Misty</h4>
+                                    <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                                    <hr class="d-none d-lg-block mb-0 ml-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
         
