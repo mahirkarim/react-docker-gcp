@@ -193,7 +193,7 @@ function App() {
             </div>
         </section>
 
-        <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Merge Health 2021</div></footer>
     </div>
   );
 }
