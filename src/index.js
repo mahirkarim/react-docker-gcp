@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './assets/styles.css';
+import SignInSide from './components/SignInSide.js';
+import SignUp from './components/SignUp.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <SignUp/> */}
+    <App/>
+    {/* <SignInSide/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
