@@ -1,4 +1,4 @@
-import './App.css';
+import './Home.css';
 //import VideoPage from './components/VideoPage.js' //then add <VideoPage/> tag
 import logo from './logo.svg';
 import pic from './assets/img/img2.png';
@@ -6,30 +6,12 @@ import areeb from './assets/img/IMG_0030.jpeg'
 import sarah from './assets/img/IMG_0054.jpeg'
 import mahir from './assets/img/IMG_0048.jpeg'
 import altLogo from './assets/img/image3.jpeg'
+import App from './App.js'
 import SignInSide from './components/SignInSide.js'
-import SignUp from './components/SignUp.js'
-import SignIn from './components/SignIn.js'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
-function App() {
+function Home() {
   return (
-    
     <div className="App">
-        <Router>
-                <Switch>
-                <Route path="/SignIn">
-                <SignIn />
-                </Route>
-                <Route path="/SignUp">
-                <SignUp/>
-                </Route>
-                </Switch>
-                </Router>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -46,22 +28,20 @@ function App() {
     <body id="page-top"></body>
               <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                {/* <a class="navbar-brand js-scroll-trigger" href="#page-top"> <img className="icon" src={pic}/></a> */}
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"> <img className="icon" src={pic}/></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/SignIn">Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         
         <header class="masthead">
             <div class="container d-flex h-100 align-items-center">
@@ -220,5 +200,5 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
 
