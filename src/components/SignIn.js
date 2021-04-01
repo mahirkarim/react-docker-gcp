@@ -67,6 +67,8 @@ export default function SignIn() {
   const classes = useStyles();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [signInError, setSignInError] = useState("");
+  const [token, setToken] = useState("");
   const history = useHistory();
 
   const handleClick = () => {
@@ -91,6 +93,7 @@ export default function SignIn() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      {signInError ? <p>{signInError}</p> : null}
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>

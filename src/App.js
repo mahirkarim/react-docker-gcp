@@ -22,7 +22,7 @@ function App() {
   const [signUpError, setSignUpError] = useState("");
   const [signInError, setSignInError] = useState("");
   useEffect(() => {
-    const token1 = getFromStorage("App");
+    const token1 = getFromStorage("token");
     if (token1) {
       fetch("https://vid.mergehealth.us/api/verify?token=" + token1)
         .then((res) => res.json())
