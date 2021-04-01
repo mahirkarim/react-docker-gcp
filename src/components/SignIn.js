@@ -83,7 +83,7 @@ export default function SignIn() {
         if (json._id) {
           localStorage.setItem("_id", json._id);
           localStorage.setItem("name", json.name); //NEED TO CHANGE THESE LINES OR API CALL (STILL NEED NAME)
-          history.push("/friendslist");
+          //history.push("/friendslist");
         }
       });
   };

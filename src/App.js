@@ -11,6 +11,7 @@ import SignUp from "./components/SignUp.js";
 import SignIn from "./components/SignIn.js";
 import Home from "./Home";
 import FriendsList from "./components/FriendsList.js";
+import { getFromStorage, setInStorage } from "./utils/storage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect } from "react";
