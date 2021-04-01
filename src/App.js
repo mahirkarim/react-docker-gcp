@@ -14,10 +14,29 @@ import FriendsList from "./components/FriendsList.js";
 import { getFromStorage, setInStorage } from "./utils/storage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [token, setToken] = useState("");
+  const [signUpError, setSignUpError] = useState("");
+  const [signInError, setSignInError] = useState("");
   useEffect(() => {
+    const token1 = getFromStorage("App");
+    if (token1) {
+      fetch("https://vid.mergehealth.us/api/verify?token=" + token1)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success) {
+            setToken(token1);
+            setIsLoading(false);
+          } else {
+            setIsLoading(false);
+          }
+        });
+    } else {
+      setIsLoading(false);
+    }
     // return () => {
     //   let req = JSON.stringify({ _id: localStorage.getItem("_id") });
     //   fetch("https://vid.mergehealth.us/api/remove", {
@@ -27,26 +46,49 @@ function App() {
     //   });
     // };
   }, []);
+  if (!token) {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/SignIn" component={SignIn}></Route>
+          <Route path="/SignUp" component={SignUp}></Route>
+          <Route path="/friendslist" component={FriendsList} />
+          <Route
+            path="/host"
+            component={() => {
+              window.location.href = `https://vid.mergehealth.us/${localStorage.getItem(
+                "_id"
+              )}`;
+              return null;
+            }}
+          />
+          <Route path="/" component={Home}></Route>
+        </Switch>
+      </Router>
+    );
+  }
 
-  return (
-    <Router>
-      <Switch>
-        <Route path="/SignIn" component={SignIn}></Route>
-        <Route path="/SignUp" component={SignUp}></Route>
-        <Route path="/friendslist" component={FriendsList} />
-        <Route
-          path="/host"
-          component={() => {
-            window.location.href = `https://vid.mergehealth.us/${localStorage.getItem(
-              "_id"
-            )}`;
-            return null;
-          }}
-        />
-        <Route path="/" component={Home}></Route>
-      </Switch>
-    </Router>
-  );
+  if (token) {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/SignIn" component={FriendsList}></Route>
+          <Route path="/SignUp" component={SignUp}></Route>
+          <Route path="/friendslist" component={FriendsList} />
+          <Route
+            path="/host"
+            component={() => {
+              window.location.href = `https://vid.mergehealth.us/${localStorage.getItem(
+                "_id"
+              )}`;
+              return null;
+            }}
+          />
+          <Route path="/" component={Home}></Route>
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default App;
