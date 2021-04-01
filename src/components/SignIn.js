@@ -82,7 +82,7 @@ export default function SignIn() {
       .then((json) => {
         if (json._id) {
           localStorage.setItem("_id", json._id);
-          localStorage.setItem("name", json.name);
+          localStorage.setItem("name", json.name); //NEED TO CHANGE THESE LINES OR API CALL (STILL NEED NAME)
           history.push("/friendslist");
         }
       });
@@ -147,7 +147,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="SignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
