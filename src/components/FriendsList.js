@@ -12,6 +12,17 @@ const FriendsList = () => {
   const [online, setOnline] = useState([]);
   //   const history = useHistory();
   useEffect(() => {
+    window.addEventListener("beforeunload", (event) => {
+      console.log("addevent");
+      event.preventDefault();
+      event.returnValue = "";
+      let req = JSON.stringify({ _id: localStorage.getItem("_id") });
+      fetch("https://vid.mergehealth.us/api/remove", {
+        method: "delete",
+        body: req,
+        headers: { "Content-Type": "application/json" },
+      });
+    });
     let req = JSON.stringify({ _id: id, isHosting: "false" });
     fetch("https://vid.mergehealth.us/api/hosting", {
       method: "post",

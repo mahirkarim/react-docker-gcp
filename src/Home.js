@@ -102,13 +102,11 @@ function Home() {
                 peers to learn from them and to support each other's health
                 goals. Initially, we are offering a service to connect users
                 with their friends while practicing daily healthy habits, but we
-                aim to quickly expand into ethical big data collection. Hop in
-                <a href="https://vid.mergehealth.us/room">
-                  {" "}
-                  this video chat room{" "}
-                </a>
-                between 4:30-5:30pm CDT if you would like to meet the team and
-                learn more about the application.
+                aim to quickly expand into ethical big data collection. If you
+                would like to connect with your friends and share your daily
+                routines, please
+                <a href="https://app.mergehealth.us/SignIn"> sign in </a>
+                here.
               </p>
             </div>
           </div>

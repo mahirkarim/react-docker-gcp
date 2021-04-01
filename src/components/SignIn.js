@@ -65,13 +65,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const history = useHistory();
 
   const handleClick = () => {
-    let req = JSON.stringify({ name: name, email: email });
-    fetch("https://vid.mergehealth.us/api/login", {
+    let req = JSON.stringify({ password: password, email: email });
+    fetch("https://vid.mergehealth.us/api/signin", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
@@ -102,19 +102,6 @@ export default function SignIn() {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="name"
-              label="Name"
-              type="name"
-              id="name"
-              autoComplete="name"
-            />
-            <TextField
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               variant="outlined"
@@ -126,6 +113,19 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+            />
+            <TextField
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -140,6 +140,18 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
             <Box mt={5}>
               <Copyright />
             </Box>

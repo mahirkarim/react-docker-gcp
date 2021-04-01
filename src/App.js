@@ -17,17 +17,6 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    window.addEventListener("unload", (event) => {
-      console.log("addevent");
-      event.preventDefault();
-      event.returnValue = "";
-      let req = JSON.stringify({ _id: localStorage.getItem("_id") });
-      fetch("https://vid.mergehealth.us/api/remove", {
-        method: "delete",
-        body: req,
-        headers: { "Content-Type": "application/json" },
-      });
-    });
     // return () => {
     //   let req = JSON.stringify({ _id: localStorage.getItem("_id") });
     //   fetch("https://vid.mergehealth.us/api/remove", {
