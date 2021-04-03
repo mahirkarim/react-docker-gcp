@@ -92,7 +92,7 @@ export default function SignIn() {
           alert("Invalid credentials");
           history.push("/SignIn");
         } else {
-          history.push("/friendslist");
+          history.push("/tutorial");
         }
       });
   };

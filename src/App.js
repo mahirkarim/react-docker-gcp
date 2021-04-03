@@ -10,6 +10,7 @@ import SignInSide from "./components/SignInSide.js";
 import SignUp from "./components/SignUp.js";
 import SignIn from "./components/SignIn.js";
 import Home from "./Home";
+import Tutorial from "./components/Tutorial.js";
 import FriendsList from "./components/FriendsList.js";
 import { getFromStorage, setInStorage } from "./utils/storage";
 
@@ -52,6 +53,7 @@ function App() {
         <Switch>
           <Route path="/SignIn" component={SignIn}></Route>
           <Route path="/SignUp" component={SignUp}></Route>
+          <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route
             path="/host"
@@ -74,6 +76,7 @@ function App() {
         <Switch>
           <Route path="/SignIn" component={FriendsList}></Route>
           <Route path="/SignUp" component={SignUp}></Route>
+          <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route
             path="/host"
