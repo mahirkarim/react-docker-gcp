@@ -86,7 +86,7 @@ export default function NewFriendsList() {
       userID: uid,
     });
     fetch("https://vid.mergehealth.us/api/remove", {
-      method: "post",
+      method: "delete",
       body: req,
       headers: { "Content-Type": "application/json" },
     })
@@ -99,7 +99,7 @@ export default function NewFriendsList() {
   };
 
   const goLive = () => {
-    let req = JSON.stringify({ userID: localStorage.getItem("uid") });
+    let req = JSON.stringify({ userID: uid, isLive: "true" });
     fetch("https://vid.mergehealth.us/api/live", {
       method: "post",
       body: req,
