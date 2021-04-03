@@ -65,20 +65,23 @@ export default function SignUp() {
       firstName: firstName,
       lastName: lastName,
     });
-    fetch("https://vid.mergehealth.us/api/signup", {
+    fetch("http://127.0.0.1:3002/api/signup", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
-    }).then((res) => {
-      return res.json();
-    });
-    // .then((json) => {
-    //   if (json._id) {
-    //     localStorage.setItem("_id", json._id);
-    //     localStorage.setItem("name", json.name); //NEED TO CHANGE THESE LINES OR API CALL (STILL NEED NAME)
-    //     //history.push("/friendslist");
-    //   }
-    // });
+    })
+      // .then((res) => res.json())
+      // .then((json) => {
+      //   setSignUpError(json.message);
+      //   history.push("/SignIn");
+      // });
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setSignUpError(json.message);
+        history.push("/SignIn");
+      });
   };
 
   return (

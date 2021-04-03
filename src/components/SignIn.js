@@ -82,10 +82,17 @@ export default function SignIn() {
         return res.json();
       })
       .then((json) => {
-        if (json._id) {
-          localStorage.setItem("_id", json._id);
-          localStorage.setItem("name", json.name); //NEED TO CHANGE THESE LINES OR API CALL (STILL NEED NAME)
-          //history.push("/friendslist");
+        // if (json._id) {
+        //   localStorage.setItem("_id", json._id);
+        //   localStorage.setItem("name", json.name); //NEED TO CHANGE THESE LINES OR API CALL (STILL NEED NAME)
+        //   history.push("/friendslist");
+        // }
+        setSignInError(json.message);
+        if (json.message != "Valid sign in") {
+          alert("Invalid credentials");
+          history.push("/SignIn");
+        } else {
+          history.push("/friendslist");
         }
       });
   };
@@ -93,7 +100,7 @@ export default function SignIn() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      {signInError ? <p>{signInError}</p> : null}
+      {/* {signInError ? <p>{signInError}</p> : null} */}
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
