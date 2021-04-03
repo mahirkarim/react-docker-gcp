@@ -80,7 +80,12 @@ export default function SignUp() {
       })
       .then((json) => {
         setSignUpError(json.message);
-        history.push("/SignIn");
+        if (json.success == false) {
+          alert(json.message);
+          history.push("/SignUp");
+        } else {
+          history.push("/SignIn");
+        }
       });
   };
 
