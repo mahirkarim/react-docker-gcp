@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 export default function NewFriendsList() {
   const classes = useStyles();
   const uid = localStorage.getItem("uid");
+  const log = 0;
   const [users, setUsers] = useState([]);
   const [online, setOnline] = useState([]);
   const history = useHistory();
@@ -88,6 +89,18 @@ export default function NewFriendsList() {
       }).then((res) => {
         return res.json();
       });
+      if (log == 1) {
+        let req = JSON.stringify({
+          userID: uid,
+        });
+        fetch("https://vid.mergehealth.us/api/remove", {
+          method: "delete",
+          body: req,
+          headers: { "Content-Type": "application/json" },
+        }).then(() => {
+          history.push("/SignIn");
+        });
+      }
     };
   }, []);
 
