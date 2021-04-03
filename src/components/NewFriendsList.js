@@ -170,10 +170,14 @@ export default function NewFriendsList() {
                           <Typography
                             component="h1"
                             variant="h6"
-                            href={`https://vid.mergehealth.us/${user.userID}`}
                             target={"_blank"}
                           >
-                            {user.name}
+                            <Link
+                              href={`https://vid.mergehealth.us/${user.userID}`}
+                              // onClick={preventDefault}
+                            >
+                              {user.name}
+                            </Link>
                           </Typography>
                         );
                         // return <a>{user.name}</a>;
