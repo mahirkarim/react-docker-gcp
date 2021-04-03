@@ -10,7 +10,7 @@ const FriendsList = () => {
   const name = localStorage.getItem("name");
   const [users, setUsers] = useState([]);
   const [online, setOnline] = useState([]);
-  //   const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     window.addEventListener("beforeunload", (event) => {
       console.log("addevent");

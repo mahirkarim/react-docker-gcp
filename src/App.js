@@ -12,6 +12,7 @@ import SignIn from "./components/SignIn.js";
 import Home from "./Home";
 import Tutorial from "./components/Tutorial.js";
 import FriendsList from "./components/FriendsList.js";
+import NewFriendsList from "./components/NewFriendsList.js";
 import { getFromStorage, setInStorage } from "./utils/storage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -52,6 +53,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/SignIn" component={SignIn}></Route>
+          <Route path="/online" component={NewFriendsList}></Route>
           <Route path="/SignUp" component={SignUp}></Route>
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
@@ -74,7 +76,7 @@ function App() {
     return (
       <Router>
         <Switch>
-          <Route path="/SignIn" component={FriendsList}></Route>
+          <Route path="/SignIn" component={NewFriendsList}></Route>
           <Route path="/SignUp" component={SignUp}></Route>
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />

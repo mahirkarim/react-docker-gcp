@@ -89,7 +89,7 @@ export default function Tutorial() {
           <Typography component="h1" variant="h3">
             How to use:
           </Typography>
-          <Typography component="h1" variant="h1"></Typography>
+          <Typography component="h1" variant="h6"></Typography>
           <Box mt={2}>
             <Typography component="h6" variant="h6">
               The Merge Health web application currently shows you which of your
@@ -97,11 +97,11 @@ export default function Tutorial() {
               to join those friends in their morning and bedtime routines. When
               you click Get Started, you will be redirected to a page with
               dropdowns showing you who else is online and who is hosting a
-              video room. If you expand the Getting Ready category, you will see
-              a list of open video rooms. Click on any of the names in this list
-              to join their room. However, you are always welcome to start your
-              own video room with the Go Live button, and your friends online
-              will be able to join you.
+              video room. If you expand the Joinable Rooms category, you will
+              see a list of joinable friends getting ready. Click on any of the
+              names in this list to join their room. However, you are always
+              welcome to start your own video room with the Go Live button, and
+              your friends online will be able to join you.
             </Typography>
           </Box>
 

@@ -92,6 +92,8 @@ export default function SignIn() {
           alert("Invalid credentials");
           history.push("/SignIn");
         } else {
+          localStorage.setItem("uid", json.token);
+          console.log(localStorage.getItem("uid"));
           history.push("/tutorial");
         }
       });

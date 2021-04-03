@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
 
 function Copyright() {
   return (
@@ -49,87 +51,128 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function NewFriendsList() {
   const classes = useStyles();
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [signUpError, setSignUpError] = useState("");
+  const uid = localStorage.getItem("uid");
+  const [users, setUsers] = useState([]);
+  const [online, setOnline] = useState([]);
   const history = useHistory();
 
-  const handleClick = () => {
-    let req = JSON.stringify({
-      password: password,
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-    });
-    fetch("https://vid.mergehealth.us/api/signup", {
-      method: "post",
-      body: req,
+  useEffect(() => {
+    fetch("https://vid.mergehealth.us/api/users", {
+      method: "get",
       headers: { "Content-Type": "application/json" },
     })
-      // .then((res) => res.json())
-      // .then((json) => {
-      //   setSignUpError(json.message);
-      //   history.push("/SignIn");
-      // });
       .then((res) => {
         return res.json();
       })
       .then((json) => {
-        setSignUpError(json.message);
-        if (json.success == false) {
-          alert(json.message);
-          history.push("/SignUp");
-        } else {
-          history.push("/SignIn");
-        }
+        setUsers(json);
       });
+    fetch("https://vid.mergehealth.us/api/activeSessions", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setOnline(json);
+      });
+  }, []);
+
+  const logOut = () => {
+    let req = JSON.stringify({
+      uid: uid,
+    });
+    fetch("https://vid.mergehealth.us/api/remove", {
+      method: "post",
+      body: req,
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        history.push("/SignIn");
+      });
+  };
+
+  const goLive = () => {
+    let req = JSON.stringify({ userID: localStorage.getItem("uid") });
+    fetch("https://vid.mergehealth.us/api/live", {
+      method: "post",
+      body: req,
+      headers: { "Content-Type": "application/json" },
+    }).then(() => {
+      window.location = `https://vid.mergehealth.us/${uid}`;
+    });
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+        <Typography component="h1" variant="h2">
+          Merge Health
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
+              <Accordion>
+                <Card>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                      Friends Online
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      {online.map((user) => {
+                        return (
+                          <Typography component="h1" variant="h6">
+                            {user.name}
+                          </Typography>
+                        );
+                        // return <a>{user.name}</a>;
+                      })}
+                    </Card.Body>
+                    {/* <Card.Body>Hello! I'm the body</Card.Body> */}
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
+              <Accordion>
+                <Card>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                      Joinable Rooms
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      {users.map((user) => {
+                        return (
+                          <Typography
+                            component="h1"
+                            variant="h6"
+                            href={`https://vid.mergehealth.us/${user.userID}`}
+                            target={"_blank"}
+                          >
+                            {user.name}
+                          </Typography>
+                        );
+                        // return <a>{user.name}</a>;
+                      })}
+                    </Card.Body>
+                    {/* <Card.Body>Hello! I'm the body</Card.Body> */}
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              {/* <TextField
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 variant="outlined"
@@ -139,10 +182,10 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-              />
+              /> */}
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              {/* <TextField
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 variant="outlined"
@@ -153,26 +196,31 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
+              /> */}
             </Grid>
           </Grid>
           <Button
-            // type="submit"
+            onClick={goLive}
+            // href={`https://vid.mergehealth.us/${uid}`}
+            //type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={handleClick}
           >
-            Sign Up
+            Go Live
           </Button>
-          <Grid container justify="center">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+          <Button
+            //type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={logOut}
+          >
+            Log Out
+          </Button>
+          <Grid container justify="center"></Grid>
         </form>
       </div>
       <Box mt={5}>
