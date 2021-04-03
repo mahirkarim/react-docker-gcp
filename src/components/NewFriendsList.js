@@ -83,7 +83,7 @@ export default function NewFriendsList() {
 
   const logOut = () => {
     let req = JSON.stringify({
-      uid: uid,
+      userID: uid,
     });
     fetch("https://vid.mergehealth.us/api/remove", {
       method: "post",
@@ -104,9 +104,13 @@ export default function NewFriendsList() {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
-    }).then(() => {
-      window.location = `https://vid.mergehealth.us/${uid}`;
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then(() => {
+        window.location = `https://vid.mergehealth.us/${uid}`;
+      });
   };
 
   return (
