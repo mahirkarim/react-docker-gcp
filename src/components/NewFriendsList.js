@@ -89,13 +89,9 @@ export default function NewFriendsList() {
       method: "delete",
       body: req,
       headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        history.push("/SignIn");
-      });
+    }).then(() => {
+      history.push("/SignIn");
+    });
   };
 
   const goLive = () => {
@@ -109,8 +105,11 @@ export default function NewFriendsList() {
         return res.json();
       })
       .then(() => {
-        window.location = `https://vid.mergehealth.us/${uid}`;
+        history.push("/video");
       });
+    // .then(() => {
+    //   window.location = `https://vid.mergehealth.us/${uid}`;
+    // });
   };
 
   return (
@@ -205,7 +204,7 @@ export default function NewFriendsList() {
           </Grid>
           <Button
             onClick={goLive}
-            // href={`https://vid.mergehealth.us/${uid}`}
+            href={`https://vid.mergehealth.us/${uid}`}
             //type="submit"
             fullWidth
             variant="contained"

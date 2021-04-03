@@ -58,10 +58,10 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route
-            path="/host"
+            path="/video"
             component={() => {
               window.location.href = `https://vid.mergehealth.us/${localStorage.getItem(
-                "_id"
+                "uid"
               )}`;
               return null;
             }}
@@ -82,10 +82,10 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route
-            path="/host"
+            path="/video"
             component={() => {
               window.location.href = `https://vid.mergehealth.us/${localStorage.getItem(
-                "_id"
+                "uid"
               )}`;
               return null;
             }}
