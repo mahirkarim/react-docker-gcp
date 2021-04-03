@@ -126,7 +126,7 @@ export default function NewFriendsList() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h2">
+        <Typography component="h3" variant="h3">
           Merge Health
         </Typography>
         <form className={classes.form} noValidate>
