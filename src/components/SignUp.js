@@ -65,7 +65,7 @@ export default function SignUp() {
       firstName: firstName,
       lastName: lastName,
     });
-    fetch("http://127.0.0.1:3002/api/signup", {
+    fetch("https://vid.mergehealth.us/api/signup", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
