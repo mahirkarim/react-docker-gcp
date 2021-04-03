@@ -78,6 +78,7 @@ function App() {
         <Switch>
           <Route path="/SignIn" component={NewFriendsList}></Route>
           <Route path="/SignUp" component={SignUp}></Route>
+          <Route path="/online" component={NewFriendsList}></Route>
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route
