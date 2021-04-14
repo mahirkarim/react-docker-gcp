@@ -16,8 +16,13 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 function Copyright() {
+  const classes = useStyles();
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
@@ -142,6 +147,22 @@ export default function NewFriendsList() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Home
+          </Typography>
+          {/* <Button color="inherit">Login</Button> */}
+        </Toolbar>
+      </AppBar>
       <div className={classes.paper}>
         <Typography component="h3" variant="h3">
           Merge Health
@@ -177,7 +198,7 @@ export default function NewFriendsList() {
                 <Card>
                   <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                      Joinable Rooms
+                      Friends Live
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey="0">
