@@ -82,14 +82,6 @@ const Profile = () => {
           borderBottom: "1px solid grey",
         }}
       >
-        <div style={{ margin: "0px 20px" }}>
-          <div>
-            <h5>Add Friends</h5>
-          </div>
-          <div>
-            <h5>Edit Profile</h5>
-          </div>
-        </div>
         <div>
           <img
             style={{
@@ -114,10 +106,18 @@ const Profile = () => {
               <h5>{followers.length} followers</h5>
               <h5>{following.length} following</h5>
             </div>
+            <div style={{}}>
+              <div>
+                <h7>Add Friends</h7>
+              </div>
+              <div>
+                <h7>Edit Profile</h7>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div>
+      <div style={{ maxwidth: "0px", margin: "auto 80px" }}>
         {/* className="gallery" */}
         {/* <h4>{friends[0]}</h4>
         <h4>{profiles[0].friends}</h4> */}
