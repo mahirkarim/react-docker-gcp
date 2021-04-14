@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import noprof from "../assets/img/noprof.jpg";
 
 const Profile = () => {
-  const [profiles, setProfiles] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const uid = localStorage.getItem("uid");
+  const [following, setFollowing] = useState([]);
+  const [followers, setFollowers] = useState([]);
   useEffect(() => {
-    let req = JSON.stringify({ userID: "60685037f21ad6001290a8f1" });
+    let req = JSON.stringify({ userID: uid });
     fetch("http://localhost:3002/api/profile", {
       method: "post",
       body: req,
@@ -14,11 +17,13 @@ const Profile = () => {
         return res.json();
       })
       .then((json) => {
-        setProfiles(json);
+        setProfile(json);
+        setFollowers(json.followers);
+        setFollowing(json.following);
       });
 
     return () => {
-      let req = JSON.stringify({ userID: "60685037f21ad6001290a8f1" });
+      let req = JSON.stringify({ userID: uid });
       fetch("http://localhost:3002/api/profile", {
         method: "post",
         body: req,
@@ -28,7 +33,7 @@ const Profile = () => {
           return res.json();
         })
         .then((json) => {
-          setProfiles(json);
+          setProfile(json);
         });
     };
   }, []);
@@ -57,7 +62,7 @@ const Profile = () => {
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ alignItems: "center" }}>
-            <h3>{profiles[0].firstName + " " + profiles[0].lastName}</h3>
+            <h3>{profile.firstName + " " + profile.lastName}</h3>
             <div
               style={{
                 display: "flex",
@@ -65,8 +70,8 @@ const Profile = () => {
                 width: "107%",
               }}
             >
-              <h5>40 followers</h5>
-              <h5>40 following</h5>
+              <h5>{followers.length} followers</h5>
+              <h5>{following.length} following</h5>
             </div>
           </div>
         </div>
@@ -74,11 +79,11 @@ const Profile = () => {
       <div className="gallery">
         {/* <h4>{friends[0]}</h4>
         <h4>{profiles[0].friends}</h4> */}
-        {/* {friends.map((value, index) => {
+        {followers.map((value, index) => {
           return <h4 key={index}>{value}</h4>;
         })}
-
-        {friends.map((user) => {
+        {/* <h4>{profile.friends[0]}</h4> */}
+        {/* {friends.map((user) => {
           return <h4>{user[0]}</h4>;
           // return <a>{user.name}</a>;
         })} */}
