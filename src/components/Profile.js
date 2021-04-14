@@ -73,7 +73,7 @@ const Profile = () => {
 
   return (
     <div>
-      {/* style{{maxwidth:"550px", margin:"0px auto"}} */}
+      {/* style={{maxwidth:"550px", margin:"0px auto"}} */}
       <div
         style={{
           display: "flex",
@@ -108,10 +108,17 @@ const Profile = () => {
             </div>
             <div style={{}}>
               <div>
-                <h7>Add Friends</h7>
+                <Link
+                  href={`https://www.mergehealth.us/addFriends`}
+                  // onClick={preventDefault}
+                >
+                  <h7>Add Friends</h7>
+                </Link>
               </div>
               <div>
-                <h7>Edit Profile</h7>
+                <Link href={`https://www.mergehealth.us/edit`}>
+                  <h7>Edit Profile</h7>
+                </Link>
               </div>
             </div>
           </div>

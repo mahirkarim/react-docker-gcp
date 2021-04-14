@@ -15,6 +15,8 @@ import FriendsList from "./components/FriendsList.js";
 import NewFriendsList from "./components/NewFriendsList.js";
 import { getFromStorage, setInStorage } from "./utils/storage";
 import Profile from "./components/Profile.js";
+import Friends from "./components/Friends.js";
+import Edit from "./components/Edit.js";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -59,6 +61,8 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route path="/profile" component={Profile} />
+          <Route path="/addFriends" component={Friends} />
+          <Route path="/edit" component={Edit} />
           <Route
             path="/video"
             component={() => {
@@ -84,6 +88,8 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route path="/profile" component={Profile} />
+          <Route path="/addFriends" component={Friends} />
+          <Route path="/edit" component={Edit} />
           <Route
             path="/video"
             component={() => {
