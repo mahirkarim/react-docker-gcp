@@ -118,14 +118,14 @@ export default function NewFriendsList() {
         setOnline(json);
       });
     return () => {
-      let req = JSON.stringify({ userID: uid, isLive: "true" });
-      fetch("https://vid.mergehealth.us/api/live", {
-        method: "post",
-        body: req,
-        headers: { "Content-Type": "application/json" },
-      }).then((res) => {
-        return res.json();
-      });
+      // let req = JSON.stringify({ userID: uid, isLive: "true" });
+      // fetch("https://vid.mergehealth.us/api/live", {
+      //   method: "post",
+      //   body: req,
+      //   headers: { "Content-Type": "application/json" },
+      // }).then((res) => {
+      //   return res.json();
+      // });
       if (log == 1) {
         let req = JSON.stringify({
           userID: uid,

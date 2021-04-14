@@ -101,7 +101,9 @@ export default function Tutorial() {
               see a list of joinable friends getting ready. Click on any of the
               names in this list to join their room. However, you are always
               welcome to start your own video room with the Go Live button, and
-              your friends online will be able to join you.
+              your friends online will be able to join you. NEW: Click on the
+              icon in the top right to go to your profile and update your
+              routines. Add friends in the "following" dropdown menu.
             </Typography>
           </Box>
 
