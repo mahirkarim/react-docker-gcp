@@ -34,6 +34,8 @@ const Profile = () => {
   const uid = localStorage.getItem("uid");
   const [following, setFollowing] = useState([]);
   const [followers, setFollowers] = useState([]);
+  const [morning, setMorning] = useState([]);
+  const [evening, setEvening] = useState([]);
   const classes = useStyles();
   useEffect(() => {
     let req = JSON.stringify({ userID: uid });
@@ -49,21 +51,23 @@ const Profile = () => {
         setProfile(json);
         setFollowers(json.followers);
         setFollowing(json.following);
+        setMorning(json.morning);
+        setEvening(json.evening);
       });
 
     return () => {
-      let req = JSON.stringify({ userID: uid });
-      fetch("http://localhost:3002/api/profile", {
-        method: "post",
-        body: req,
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((json) => {
-          setProfile(json);
-        });
+      //   let req = JSON.stringify({ userID: uid });
+      //   fetch("http://localhost:3002/api/profile", {
+      //     method: "post",
+      //     body: req,
+      //     headers: { "Content-Type": "application/json" },
+      //   })
+      //     .then((res) => {
+      //       return res.json();
+      //     })
+      //     .then((json) => {
+      //       setProfile(json);
+      //     });
     };
   }, []);
 
@@ -127,12 +131,8 @@ const Profile = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              {followers.map((value, index) => {
-                return (
-                  <h4 className="item" key={index}>
-                    {value}
-                  </h4>
-                );
+              {morning.map((value, index) => {
+                return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
               })}
             </Typography>
           </AccordionDetails>
@@ -147,12 +147,8 @@ const Profile = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              {followers.map((value, index) => {
-                return (
-                  <h4 className="item" key={index}>
-                    {value}
-                  </h4>
-                );
+              {evening.map((value, index) => {
+                return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
               })}
             </Typography>
           </AccordionDetails>
@@ -168,11 +164,7 @@ const Profile = () => {
           <AccordionDetails>
             <Typography>
               {followers.map((value, index) => {
-                return (
-                  <h4 className="item" key={index}>
-                    {value}
-                  </h4>
-                );
+                return <h4 key={index}>{value}</h4>;
               })}
             </Typography>
           </AccordionDetails>
@@ -187,12 +179,8 @@ const Profile = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              {followers.map((value, index) => {
-                return (
-                  <h4 className="item" key={index}>
-                    {value}
-                  </h4>
-                );
+              {following.map((value, index) => {
+                return <h4 key={index}>{value}</h4>;
               })}
             </Typography>
           </AccordionDetails>
