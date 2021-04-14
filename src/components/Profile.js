@@ -18,10 +18,24 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import Menu from "@material-ui/core/Menu";
+// import HomeIcon from "@material-ui/icons/HomeIcon";
+import Switch from "@material-ui/core/Switch";
+import FormGroup from "@material-ui/core/FormGroup";
+import MenuItem from "@material-ui/core/MenuItem";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    "& > svg": {
+      margin: theme.spacing(2),
+    },
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -29,7 +43,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profile = () => {
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
+export default function Profile() {
+  const history = useHistory();
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
   const [following, setFollowing] = useState([]);
@@ -37,6 +60,24 @@ const Profile = () => {
   const [morning, setMorning] = useState([]);
   const [evening, setEvening] = useState([]);
   const classes = useStyles();
+  const [auth, setAuth] = React.useState(true);
+  const home = () => {
+    history.push("/online");
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
   useEffect(() => {
     let req = JSON.stringify({ userID: uid });
     fetch("https://vid.mergehealth.us/api/profile", {
@@ -72,139 +113,192 @@ const Profile = () => {
   }, []);
 
   return (
-    <div>
-      {/* style={{maxwidth:"550px", margin:"0px auto"}} */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          margin: "15px 0px",
-          borderBottom: "1px solid grey",
-        }}
-      >
-        <div>
-          <img
-            style={{
-              width: "160px",
-              height: "160px",
-              borderRadius: "80px",
-              margin: "10px 0px",
-            }}
-            src={noprof}
-          />
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ alignItems: "center" }}>
-            <h3>{profile.firstName + " " + profile.lastName}</h3>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "107%",
-              }}
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
             >
-              <h5>{followers.length} followers</h5>
-              <h5>{following.length} following</h5>
-            </div>
-            <div style={{}}>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              Profile
+            </Typography>
+            {auth && (
               <div>
-                <Link
-                  href={`https://www.mergehealth.us/addFriends`}
-                  // onClick={preventDefault}
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={home}
+                  color="inherit"
                 >
-                  <h7>Add Friends</h7>
-                </Link>
+                  <HomeIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                </Menu>
               </div>
-              <div>
-                <Link href={`https://www.mergehealth.us/edit`}>
-                  <h7>Edit Profile</h7>
-                </Link>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
+      <div>
+        {/* style={{maxwidth:"550px", margin:"0px auto"}} */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            margin: "15px 0px",
+            borderBottom: "1px solid grey",
+          }}
+        >
+          <div>
+            <img
+              style={{
+                width: "160px",
+                height: "160px",
+                borderRadius: "80px",
+                margin: "10px 0px",
+              }}
+              src={noprof}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ alignItems: "center" }}>
+              <h3>{profile.firstName + " " + profile.lastName}</h3>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "107%",
+                }}
+              >
+                <h5>{followers.length} followers</h5>
+                <h5>{following.length} following</h5>
+              </div>
+              <div style={{}}>
+                <div>
+                  <Link
+                    href={`https://www.mergehealth.us/addFriends`}
+                    // onClick={preventDefault}
+                  >
+                    <h7>Add Friends</h7>
+                  </Link>
+                </div>
+                <div>
+                  <Link href={`https://www.mergehealth.us/edit`}>
+                    <h7>Edit Profile</h7>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div style={{ maxwidth: "0px", margin: "auto 80px" }}>
-        {/* className="gallery" */}
-        {/* <h4>{friends[0]}</h4>
+        <div style={{ maxwidth: "0px", margin: "auto 80px" }}>
+          {/* className="gallery" */}
+          {/* <h4>{friends[0]}</h4>
         <h4>{profiles[0].friends}</h4> */}
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading}>Morning Routine</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              {morning.map((value, index) => {
-                return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
-              })}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography className={classes.heading}>Evening Routine</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              {evening.map((value, index) => {
-                return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
-              })}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography className={classes.heading}>Followers</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              {followers.map((value, index) => {
-                return <h4 key={index}>{value}</h4>;
-              })}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4a-content"
-            id="panel4a-header"
-          >
-            <Typography className={classes.heading}>Following</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              {following.map((value, index) => {
-                return <h4 key={index}>{value}</h4>;
-              })}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        {/* <h4>{profile.friends[0]}</h4> */}
-        {/* {friends.map((user) => {
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography className={classes.heading}>
+                Morning Routine
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {morning.map((value, index) => {
+                  return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
+                })}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography className={classes.heading}>
+                Evening Routine
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {evening.map((value, index) => {
+                  return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
+                })}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3a-content"
+              id="panel3a-header"
+            >
+              <Typography className={classes.heading}>Followers</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {followers.map((value, index) => {
+                  return <h4 key={index}>{value}</h4>;
+                })}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel4a-content"
+              id="panel4a-header"
+            >
+              <Typography className={classes.heading}>Following</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {following.map((value, index) => {
+                  return <h4 key={index}>{value}</h4>;
+                })}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          {/* <h4>{profile.friends[0]}</h4> */}
+          {/* {friends.map((user) => {
           return <h4>{user[0]}</h4>;
           // return <a>{user.name}</a>;
         })} */}
-        {/* <img className="item" src={noprof} />
+          {/* <img className="item" src={noprof} />
         <img className="item" src={noprof} />
         <img className="item" src={noprof} />
         <img className="item" src={noprof} />
         <img className="item" src={noprof} /> */}
+        </div>
       </div>
-    </div>
+    </Container>
   );
-};
-
-export default Profile;
+}
