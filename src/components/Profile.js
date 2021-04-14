@@ -194,18 +194,10 @@ export default function Profile() {
                   width: "107%",
                 }}
               >
-                <h5>{followers.length} followers</h5>
-                <h5>{following.length} following</h5>
+                <h6>{followers.length} followers</h6>
+                <h6>{following.length} following</h6>
               </div>
               <div style={{}}>
-                <div>
-                  <Link
-                    href={`https://www.mergehealth.us/addFriends`}
-                    // onClick={preventDefault}
-                  >
-                    <h7>Add Friends</h7>
-                  </Link>
-                </div>
                 <div>
                   <Link href={`https://www.mergehealth.us/edit`}>
                     <h7>Edit Profile</h7>
@@ -215,7 +207,7 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div style={{ maxwidth: "0px", margin: "auto 80px" }}>
+        <div style={{ maxwidth: "0px", margin: "auto 0px" }}>
           {/* className="gallery" */}
           {/* <h4>{friends[0]}</h4>
         <h4>{profiles[0].friends}</h4> */}
@@ -284,6 +276,14 @@ export default function Profile() {
                 {following.map((value, index) => {
                   return <h4 key={index}>{value}</h4>;
                 })}
+                <div>
+                  <Link
+                    href={`https://www.mergehealth.us/addFriends`}
+                    // onClick={preventDefault}
+                  >
+                    <h7>Add Friends</h7>
+                  </Link>
+                </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
