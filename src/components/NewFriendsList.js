@@ -117,6 +117,10 @@ export default function NewFriendsList() {
     });
   };
 
+  const profile = () => {
+    history.push("/profile");
+  };
+
   const goLive = () => {
     let req = JSON.stringify({ userID: uid, isLive: "true" });
     fetch("https://vid.mergehealth.us/api/live", {
@@ -249,6 +253,16 @@ export default function NewFriendsList() {
             onClick={logOut}
           >
             Log Out
+          </Button>
+          <Button
+            //type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={profile}
+          >
+            Profile
           </Button>
           <Grid container justify="center"></Grid>
         </form>
