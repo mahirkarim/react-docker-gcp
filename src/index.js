@@ -8,11 +8,9 @@ import SignInSide from "./components/SignInSide.js";
 import SignUp from "./components/SignUp.js";
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <SignUp/> */}
-    <App />
-    {/* <SignInSide/> */}
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <App />,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

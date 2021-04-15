@@ -57,7 +57,7 @@ function HomeIcon(props) {
   );
 }
 
-export default function Profile() {
+export default function EditMorning() {
   const history = useHistory();
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
@@ -327,6 +327,7 @@ export default function Profile() {
         <img className="item" src={noprof} />
         <img className="item" src={noprof} /> */}
         </div>
+        <Paper className={classes.pageContent}>{edit}</Paper>
       </div>
     </Container>
   );

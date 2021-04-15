@@ -17,6 +17,9 @@ import { getFromStorage, setInStorage } from "./utils/storage";
 import Profile from "./components/Profile.js";
 import Friends from "./components/Friends.js";
 import Edit from "./components/Edit.js";
+import EditProfile from "./components/EditProfile.js";
+import EditMorning from "./components/EditMorning.js";
+import EditEvening from "./components/EditEvening.js";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -63,6 +66,9 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/addFriends" component={Friends} />
           <Route path="/edit" component={Edit} />
+          <Route path="/editProfile" component={EditProfile} />
+          <Route path="/editEvening" component={EditEvening} />
+          <Route path="/editMorning" component={EditMorning} />
           <Route
             path="/video"
             component={() => {
@@ -90,6 +96,9 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/addFriends" component={Friends} />
           <Route path="/edit" component={Edit} />
+          <Route path="/editProfile" component={EditProfile} />
+          <Route path="/editEvening" component={EditEvening} />
+          <Route path="/editMorning" component={EditMorning} />
           <Route
             path="/video"
             component={() => {
