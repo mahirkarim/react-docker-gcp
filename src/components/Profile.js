@@ -217,7 +217,7 @@ export default function Profile() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`http://localhost:3000/editProfile`}>
+                    <Link href={`http://www.mergehealth.us/editProfile`}>
                       <h7>Edit Profile</h7>
                     </Link>
                   </Grid>

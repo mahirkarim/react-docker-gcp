@@ -25,7 +25,7 @@ export default function Edit() {
   const { values, setValues, handleInputChange } = UseForm(initialFValues);
 
   let req = JSON.stringify({ userID: uid });
-  fetch("http://localhost:3002/api/profile", {
+  fetch("http://vid.mergehealth.us/api/profile", {
     method: "post",
     body: req,
     headers: { "Content-Type": "application/json" },
