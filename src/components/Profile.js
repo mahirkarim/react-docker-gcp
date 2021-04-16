@@ -111,7 +111,7 @@ export default function Profile() {
         setEvening(json.evening);
       });
 
-    edit();
+    // edit();
 
     return () => {
       //   let req = JSON.stringify({ userID: uid });
@@ -217,7 +217,7 @@ export default function Profile() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editProfile`}>
+                    <Link href={`http://localhost:3000/editProfile`}>
                       <h7>Edit Profile</h7>
                     </Link>
                   </Grid>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 
-export function useForm(initialFValues) {
+export function UseForm(initialFValues) {
   const [values, setValues] = useState(initialFValues);
   const handleInputChange = (e) => {
     const { name, value } = e.target;

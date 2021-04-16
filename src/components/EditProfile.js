@@ -30,7 +30,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
-import Edit from "./Edit";
+import EditP from "./EditP";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,14 +79,6 @@ export default function EditProfile() {
     setAnchorEl(event.currentTarget);
   };
 
-  const edit = () => {
-    if (editT == 0) {
-      return;
-    } else if (editT == 1) {
-      return <Edit></Edit>;
-    }
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -111,8 +103,6 @@ export default function EditProfile() {
         setEvening(json.evening);
       });
 
-    edit();
-
     return () => {
       //   let req = JSON.stringify({ userID: uid });
       //   fetch("http://localhost:3002/api/profile", {
@@ -127,7 +117,7 @@ export default function EditProfile() {
       //       setProfile(json);
       //     });
     };
-  }, [editT]);
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -316,18 +306,10 @@ export default function EditProfile() {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* <h4>{profile.friends[0]}</h4> */}
-          {/* {friends.map((user) => {
-          return <h4>{user[0]}</h4>;
-          // return <a>{user.name}</a>;
-        })} */}
-          {/* <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} /> */}
         </div>
-        <Paper className={classes.pageContent}>{edit}</Paper>
+        <Paper className={classes.pageContent}>
+          <EditP />
+        </Paper>
       </div>
     </Container>
   );
