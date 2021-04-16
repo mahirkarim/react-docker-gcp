@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import { UseForm, Form } from "./UseForm";
 import Controls from "./controls/Controls";
+import { useHistory } from "react-router-dom";
 
 const genderItems = [
   { id: "male", title: "Male" },
@@ -24,28 +25,62 @@ export default function Edit() {
   const uid = localStorage.getItem("uid");
   const { values, setValues, handleInputChange } = UseForm(initialFValues);
 
-  let req = JSON.stringify({ userID: uid });
-  fetch("http://vid.mergehealth.us/api/profile", {
-    method: "post",
-    body: req,
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      setProfile(json);
-      setValues({
-        username: json.username,
-        email: json.email,
-        city: json.city,
-        phone: json.phone,
-        birthday: json.birthday,
-        gender: json.gender,
-      });
-    });
+  const history = useHistory();
 
-  useEffect(() => {}, []); //the bracket calls use effect whenever what's in it changes
+  const handleClick = () => {
+    let req = JSON.stringify({
+      userID: uid,
+      username: values.username,
+      email: values.email,
+      city: values.city,
+      phone: values.phone,
+      birthday: values.birthday,
+      gender: values.gender,
+    });
+    fetch("https://vid.mergehealth.us/api/editprofile", {
+      method: "post",
+      body: req,
+      headers: { "Content-Type": "application/json" },
+    })
+      // .then((res) => res.json())
+      // .then((json) => {
+      //   setSignUpError(json.message);
+      //   history.push("/SignIn");
+      // });
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        if (json.success == false) {
+          alert(json.message);
+        } else {
+          history.push("/profile");
+        }
+      });
+  };
+
+  useEffect(() => {
+    let req = JSON.stringify({ userID: uid });
+    fetch("https://vid.mergehealth.us/api/profile", {
+      method: "post",
+      body: req,
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setProfile(json);
+        setValues({
+          username: json.username,
+          email: json.email,
+          city: json.city,
+          phone: json.phone,
+          birthday: json.birthday,
+          gender: json.gender,
+        });
+      });
+  }, []); //the bracket calls use effect whenever what's in it changes
 
   return (
     <Form>
@@ -91,7 +126,11 @@ export default function Edit() {
             onChange={handleInputChange}
           />
           <div>
-            <Controls.Button type="submit" text="Submit"></Controls.Button>
+            <Controls.Button
+              type="submit"
+              text="Submit"
+              onClick={handleClick}
+            ></Controls.Button>
           </div>
         </Grid>
       </Grid>
