@@ -58,6 +58,7 @@ function HomeIcon(props) {
 }
 
 export default function Profile() {
+  localStorage.setItem("addStep", "");
   const history = useHistory();
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
@@ -227,7 +228,7 @@ export default function Profile() {
                     </Link>
                   </Grid>
                   <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editEvening`}>
+                    <Link href={`http://localhost:3000/editEvening`}>
                       <h7>Edit Evening</h7>
                     </Link>
                   </Grid>

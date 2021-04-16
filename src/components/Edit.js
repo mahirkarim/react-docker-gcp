@@ -84,16 +84,16 @@
 //             onChange={handleInputChange}
 //             items={genderItems}
 //           />
-//           <Controls.Select
-//             name="departmentId"
-//             label="Test"
-//             value={values.departmentId}
-//             onChange={handleInputChange}
-//             options={[
-//               { id: "1", title: "test" },
-//               { id: "2", title: "test" },
-//             ]} //this is where the backend comes in?
-//           />
+// <Controls.Select
+//   name="departmentId"
+//   label="Test"
+//   value={values.departmentId}
+//   onChange={handleInputChange}
+//   options={[
+//     { id: "1", title: "test" },
+//     { id: "2", title: "test" },
+//   ]} //this is where the backend comes in?
+// />
 //           <Controls.DatePicker
 //             name="hireDate"
 //             label="Date"

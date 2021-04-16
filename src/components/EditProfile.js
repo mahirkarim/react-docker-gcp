@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
+    // margin: theme.spacing(1),
+    padding: theme.spacing(1),
   },
 }));
 

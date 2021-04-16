@@ -85,7 +85,7 @@ export default function Edit() {
   return (
     <Form>
       <Grid container>
-        <Grid item xs={6}>
+        <Grid>
           <Controls.Input
             name="username"
             label="username"
@@ -110,15 +110,13 @@ export default function Edit() {
             value={values.city}
             onChange={handleInputChange}
           />
-        </Grid>
-        <Grid item xs={6}>
-          <Controls.RadioGroup
+          {/* <Controls.RadioGroup
             name="gender"
             label="Gender"
             value={values.gender}
             onChange={handleInputChange}
             items={genderItems}
-          />
+          /> */}
           <Controls.DatePicker
             name="birthday"
             label="Birthday"
