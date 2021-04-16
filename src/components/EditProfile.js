@@ -207,8 +207,8 @@ export default function EditProfile() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editProfile`}>
-                      <h7>Edit Profile</h7>
+                    <Link href={`https://www.mergehealth.us/profile`}>
+                      <h7>Done Editing</h7>
                     </Link>
                   </Grid>
                   <Grid item xs={6}>
