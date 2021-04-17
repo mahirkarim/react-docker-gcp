@@ -228,7 +228,7 @@ export default function Profile() {
                     </Link>
                   </Grid>
                   <Grid item xs={6}>
-                    <Link href={`http://localhost:3000/editEvening`}>
+                    <Link href={`https://www.mergehealth.us/editEvening`}>
                       <h7>Edit Evening</h7>
                     </Link>
                   </Grid>

@@ -30,7 +30,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
-import Edit from "./Edit";
+import EditM from "./EditM";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
+    // margin: theme.spacing(1),
+    padding: theme.spacing(1),
   },
 }));
 
@@ -57,7 +57,7 @@ function HomeIcon(props) {
   );
 }
 
-export default function EditMorning() {
+export default function EditProfile() {
   const history = useHistory();
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
@@ -77,14 +77,6 @@ export default function EditMorning() {
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const edit = () => {
-    if (editT == 0) {
-      return;
-    } else if (editT == 1) {
-      return <Edit></Edit>;
-    }
   };
 
   const handleClose = () => {
@@ -111,8 +103,6 @@ export default function EditMorning() {
         setEvening(json.evening);
       });
 
-    edit();
-
     return () => {
       //   let req = JSON.stringify({ userID: uid });
       //   fetch("http://localhost:3002/api/profile", {
@@ -127,7 +117,7 @@ export default function EditMorning() {
       //       setProfile(json);
       //     });
     };
-  }, [editT]);
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -217,8 +207,8 @@ export default function EditMorning() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editProfile`}>
-                      <h7>Edit Profile</h7>
+                    <Link href={`https://www.mergehealth.us/profile`}>
+                      <h7>Done Editing</h7>
                     </Link>
                   </Grid>
                   <Grid item xs={6}>
@@ -316,18 +306,10 @@ export default function EditMorning() {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* <h4>{profile.friends[0]}</h4> */}
-          {/* {friends.map((user) => {
-          return <h4>{user[0]}</h4>;
-          // return <a>{user.name}</a>;
-        })} */}
-          {/* <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} />
-        <img className="item" src={noprof} /> */}
         </div>
-        <Paper className={classes.pageContent}>{edit}</Paper>
+        <Paper className={classes.pageContent}>
+          <EditM />
+        </Paper>
       </div>
     </Container>
   );
