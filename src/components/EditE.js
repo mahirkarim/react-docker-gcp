@@ -110,7 +110,7 @@ export default function Edit() {
           />
           <Controls.Input
             label="Step"
-            name="addStep"
+            name="addStepE"
             value={values.addStepE}
             onChange={handleInputChange}
           />

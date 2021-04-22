@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import noprof from "../assets/img/noprof.jpg";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -28,7 +28,11 @@ import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import { useHistory } from "react-router-dom";
+import {
+  useHistory,
+  BrowserRouter as Router,
+  useLocation,
+} from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import Edit from "./Edit";
 
@@ -57,11 +61,16 @@ function HomeIcon(props) {
   );
 }
 
-export default function Profile() {
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+export default function FriendProfile() {
+  let query = useQuery();
   localStorage.setItem("addStep", "");
   const history = useHistory();
   const [profile, setProfile] = useState([]);
-  const uid = localStorage.getItem("uid");
+  const uid = localStorage.getItem("frienduid");
   const [following, setFollowing] = useState([]);
   const [followers, setFollowers] = useState([]);
   const [morning, setMorning] = useState([]);
@@ -69,16 +78,10 @@ export default function Profile() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [editT, setEditT] = useState(0);
-
+  const username = localStorage.getItem("frienduid");
   const home = () => {
     history.push("/online");
   };
-  const friendProf = (username) => {
-    localStorage.setItem("frienduid", username);
-    history.push(`/friendProf/${username}`);
-  };
-
-  const [users, setUsers] = useState([]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -102,8 +105,8 @@ export default function Profile() {
     setAuth(event.target.checked);
   };
   useEffect(() => {
-    let req = JSON.stringify({ userID: uid });
-    fetch("https://vid.mergehealth.us/api/profile", {
+    let req = JSON.stringify({ username: username });
+    fetch("https://vid.mergehealth.us/api/friendprofile", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
@@ -117,16 +120,6 @@ export default function Profile() {
         setFollowing(json.following);
         setMorning(json.morning);
         setEvening(json.evening);
-      });
-    fetch("https://vid.mergehealth.us/api/users", {
-      method: "get",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setUsers(json);
       });
 
     // edit();
@@ -235,18 +228,8 @@ export default function Profile() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editProfile`}>
-                      <h7>Edit Profile</h7>
-                    </Link>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editMorning`}>
-                      <h7>Edit Morning</h7>
-                    </Link>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Link href={`https://www.mergehealth.us/editEvening`}>
-                      <h7>Edit Evening</h7>
+                    <Link href={`http://localhost:3000/profile`}>
+                      <h7>Back</h7>
                     </Link>
                   </Grid>
                 </div>
@@ -289,7 +272,7 @@ export default function Profile() {
             <AccordionDetails>
               <Typography>
                 {evening.map((value, index) => {
-                  return <h5 key={index}>Step {index + 1 + ": " + value}</h5>;
+                  return <h4 key={index}>Step {index + 1 + ": " + value}</h4>;
                 })}
               </Typography>
             </AccordionDetails>
@@ -305,17 +288,7 @@ export default function Profile() {
             <AccordionDetails>
               <Typography>
                 {followers.map((value, index) => {
-                  return (
-                    <h5>
-                      <Link
-                        key={index}
-                        onClick={() => friendProf(value)}
-                        href={`http://localhost:3000/friendProf/${value}`}
-                      >
-                        {value}
-                      </Link>
-                    </h5>
-                  );
+                  return <h4 key={index}>{value}</h4>;
                 })}
               </Typography>
             </AccordionDetails>
@@ -331,19 +304,8 @@ export default function Profile() {
             <AccordionDetails>
               <Typography>
                 {following.map((value, index) => {
-                  return (
-                    <h5>
-                      <Link
-                        key={index}
-                        onClick={() => friendProf(value)}
-                        // href={`http://localhost:3000/friendProf/?name=${value}`}
-                      >
-                        {value}
-                      </Link>
-                    </h5>
-                  );
+                  return <h4 key={index}>{value}</h4>;
                 })}
-
                 <div>
                   <Link
                     href={`https://www.mergehealth.us/addFriends`}
