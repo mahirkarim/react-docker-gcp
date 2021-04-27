@@ -26,11 +26,58 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 function App() {
+  window.OneSignal = window.OneSignal || [];
+  const OneSignal = window.OneSignal;
   const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState("");
   const [signUpError, setSignUpError] = useState("");
   const [signInError, setSignInError] = useState("");
   useEffect(() => {
+    OneSignal.push(() => {
+      OneSignal.init(
+        {
+          appId: "89228c22-67e9-4d5b-92c1-2817c0a0f711", //https://dev.to/devpato/push-notifications-in-reactjs-with-onesignal-5bon
+          promptOptions: {
+            slidedown: {
+              enabled: true,
+              actionMessage:
+                "We'd like to let you know when your friends are live",
+              acceptButtonText: "Ok",
+              cancelButtonText: "Cancel",
+              categories: {
+                tags: [
+                  // {
+                  //   tag: "react",
+                  //   label: "ReactJS",
+                  // },
+                  // {
+                  //   tag: "angular",
+                  //   label: "Angular",
+                  // },
+                  // {
+                  //   tag: "vue",
+                  //   label: "VueJS",
+                  // },
+                  {
+                    tag: "notifications",
+                    label: "Allow Notifications",
+                  },
+                ],
+              },
+            },
+          },
+          welcomeNotification: {
+            title: "One Signal",
+            message: "Thanks for subscribing!",
+          },
+        },
+        //Automatically subscribe to the new_app_version tag
+        OneSignal.sendTag("new_app_version", "new_app_version", (tagsSent) => {
+          // Callback called when tag has finished sending
+          console.log("new_app_version TAG SENT", tagsSent);
+        })
+      );
+    });
     const token1 = getFromStorage("token");
     if (token1) {
       fetch("https://vid.mergehealth.us/api/verify?token=" + token1)

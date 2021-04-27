@@ -25,6 +25,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
+import API from "./API";
 
 function Copyright() {
   const classes = useStyles();
@@ -97,7 +98,7 @@ export default function NewFriendsList() {
   };
 
   useEffect(() => {
-    fetch("https://vid.mergehealth.us/api/users", {
+    fetch(API + "/users", {
       method: "get",
       headers: { "Content-Type": "application/json" },
     })
@@ -107,7 +108,7 @@ export default function NewFriendsList() {
       .then((json) => {
         setUsers(json);
       });
-    fetch("https://vid.mergehealth.us/api/activeSessions", {
+    fetch(API + "/activeSessions", {
       method: "get",
       headers: { "Content-Type": "application/json" },
     })
@@ -130,7 +131,7 @@ export default function NewFriendsList() {
         let req = JSON.stringify({
           userID: uid,
         });
-        fetch("https://vid.mergehealth.us/api/remove", {
+        fetch(API + "/remove", {
           method: "delete",
           body: req,
           headers: { "Content-Type": "application/json" },
@@ -145,7 +146,7 @@ export default function NewFriendsList() {
     let req = JSON.stringify({
       userID: uid,
     });
-    fetch("https://vid.mergehealth.us/api/remove", {
+    fetch(API + "/remove", {
       method: "delete",
       body: req,
       headers: { "Content-Type": "application/json" },
@@ -160,7 +161,7 @@ export default function NewFriendsList() {
 
   const goLive = () => {
     let req = JSON.stringify({ userID: uid, isLive: "true" });
-    fetch("https://vid.mergehealth.us/api/live", {
+    fetch(API + "/live", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
