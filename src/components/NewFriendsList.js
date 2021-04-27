@@ -177,6 +177,11 @@ export default function NewFriendsList() {
     // });
   };
 
+  const joinRoom = (fid) => {
+    localStorage.setItem("fid", fid);
+    history.push("/fvid");
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -276,8 +281,8 @@ export default function NewFriendsList() {
                             target={"_blank"}
                           >
                             <Link
-                              href={`https://vid.mergehealth.us/${user.userID}`}
-                              // onClick={preventDefault}
+                              // href={`https://vid.mergehealth.us/${user.userID}`}
+                              onClick={() => joinRoom(user.userID)}
                             >
                               {user.name}
                             </Link>
@@ -320,7 +325,7 @@ export default function NewFriendsList() {
             </Grid>
           </Grid>
           <Button
-            onClick={goLive}
+            onClick={() => goLive()}
             // href={`https://vid.mergehealth.us/${uid}`}
             //type="submit"
             fullWidth

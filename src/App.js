@@ -22,6 +22,7 @@ import EditMorning from "./components/EditMorning.js";
 import EditEvening from "./components/EditEvening.js";
 import FriendProfile from "./components/FriendProfile.js";
 import Vid from "./components/Vid.js";
+import FVid from "./components/FVid.js";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -68,8 +69,8 @@ function App() {
             },
           },
           welcomeNotification: {
-            title: "One Signal",
-            message: "Thanks for subscribing!",
+            title: "Merge Health",
+            message: "You will now be notified when your friends are online",
           },
         },
         //Automatically subscribe to the new_app_version tag
@@ -120,6 +121,7 @@ function App() {
           <Route path="/editMorning" component={EditMorning} />
           <Route path="/friendProf" component={FriendProfile} />
           <Route path="/vid" component={Vid} />
+          <Route path="/fvid" component={FVid} />
           <Route
             path="/video"
             component={() => {
@@ -152,6 +154,8 @@ function App() {
           <Route path="/editMorning" component={EditMorning} />
           <Route path="/friendProf" component={FriendProfile} />
           <Route path="/vid" component={Vid} />
+          <Route path="/fvid" component={FVid} />
+
           <Route
             path="/video"
             component={() => {

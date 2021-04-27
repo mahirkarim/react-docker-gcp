@@ -64,15 +64,19 @@ function HomeIcon(props) {
   );
 }
 
-export default function Vid() {
+export default function FVid() {
   const classes = useStyles();
-  const uid = localStorage.getItem("uid");
+  const uid = localStorage.getItem("fid");
   const log = 0;
   const history = useHistory();
   const [auth, setAuth] = React.useState(true);
   const [profile, setProfile] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const profiles = () => {
+    history.push("/profile");
+  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -88,10 +92,6 @@ export default function Vid() {
   const home = () => {
     history.push("/online");
   };
-  const profiles = () => {
-    history.push("/profile");
-  };
-
   useEffect(() => {
     let req = JSON.stringify({ userID: uid });
     fetch(API + "/profile", {
