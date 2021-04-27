@@ -170,7 +170,7 @@ export default function NewFriendsList() {
         return res.json();
       })
       .then(() => {
-        history.push("/video");
+        history.push("/vid");
       });
     // .then(() => {
     //   window.location = `https://vid.mergehealth.us/${uid}`;
@@ -321,7 +321,7 @@ export default function NewFriendsList() {
           </Grid>
           <Button
             onClick={goLive}
-            href={`https://vid.mergehealth.us/${uid}`}
+            // href={`https://vid.mergehealth.us/${uid}`}
             //type="submit"
             fullWidth
             variant="contained"

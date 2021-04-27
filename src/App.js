@@ -21,6 +21,7 @@ import EditProfile from "./components/EditProfile.js";
 import EditMorning from "./components/EditMorning.js";
 import EditEvening from "./components/EditEvening.js";
 import FriendProfile from "./components/FriendProfile.js";
+import Vid from "./components/Vid.js";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -118,6 +119,7 @@ function App() {
           <Route path="/editEvening" component={EditEvening} />
           <Route path="/editMorning" component={EditMorning} />
           <Route path="/friendProf" component={FriendProfile} />
+          <Route path="/vid" component={Vid} />
           <Route
             path="/video"
             component={() => {
@@ -149,6 +151,7 @@ function App() {
           <Route path="/editEvening" component={EditEvening} />
           <Route path="/editMorning" component={EditMorning} />
           <Route path="/friendProf" component={FriendProfile} />
+          <Route path="/vid" component={Vid} />
           <Route
             path="/video"
             component={() => {
