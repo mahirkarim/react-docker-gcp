@@ -115,7 +115,6 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route path="/profile" component={Profile} />
-          <Route path="/addFriends" component={Friends} />
           <Route path="/edit" component={Edit} />
           <Route path="/editProfile" component={EditProfile} />
           <Route path="/editEvening" component={EditEvening} />
@@ -149,7 +148,6 @@ function App() {
           <Route path="/tutorial" component={Tutorial}></Route>
           <Route path="/friendslist" component={FriendsList} />
           <Route path="/profile" component={Profile} />
-          <Route path="/addFriends" component={Friends} />
           <Route path="/edit" component={Edit} />
           <Route path="/editProfile" component={EditProfile} />
           <Route path="/editEvening" component={EditEvening} />
