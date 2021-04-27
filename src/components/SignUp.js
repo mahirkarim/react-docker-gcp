@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import API from "./API.js";
 
 function Copyright() {
   return (
@@ -56,6 +57,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [signUpError, setSignUpError] = useState("");
+  const [username, setUsername] = useState("");
   const history = useHistory();
 
   const handleClick = () => {
@@ -64,8 +66,9 @@ export default function SignUp() {
       email: email,
       firstName: firstName,
       lastName: lastName,
+      username: username,
     });
-    fetch("https://vid.mergehealth.us/api/signup", {
+    fetch(API + "/signup", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
@@ -139,6 +142,18 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                variant="outlined"
+                fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12}>

@@ -90,7 +90,7 @@ export default function Vid() {
   };
   useEffect(() => {
     let req = JSON.stringify({ userID: uid });
-    fetch("https://vid.mergehealth.us/api/profile", {
+    fetch(API + "/profile", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
@@ -105,18 +105,18 @@ export default function Vid() {
     // edit();
 
     return () => {
-      //   let req = JSON.stringify({ userID: uid });
-      //   fetch("http://localhost:3002/api/profile", {
-      //     method: "post",
-      //     body: req,
-      //     headers: { "Content-Type": "application/json" },
-      //   })
-      //     .then((res) => {
-      //       return res.json();
-      //     })
-      //     .then((json) => {
-      //       setProfile(json);
-      //     });
+      let req = JSON.stringify({ userID: uid, isLive: "false" });
+      fetch(API + "/live", {
+        method: "post",
+        body: req,
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then(() => {
+          history.push("/vid");
+        });
     };
   }, []);
 

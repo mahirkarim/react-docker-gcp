@@ -28,6 +28,7 @@ import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import API from "./API";
 import {
   useHistory,
   BrowserRouter as Router,
@@ -106,7 +107,7 @@ export default function FriendProfile() {
   };
   useEffect(() => {
     let req = JSON.stringify({ username: username });
-    fetch("https://vid.mergehealth.us/api/friendprofile", {
+    fetch(API + "/friendprofile", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },
