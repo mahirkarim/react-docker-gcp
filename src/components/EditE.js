@@ -11,7 +11,7 @@ const initialFValues = {
   evening: [],
 };
 
-export default function Edit() {
+export default function EditE() {
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
   const { values, setValues, handleInputChange } = UseForm(initialFValues);
