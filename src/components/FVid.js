@@ -105,18 +105,23 @@ export default function FVid() {
       .then((json) => {
         setProfile(json);
       });
-
+    setTimeout(() => {
+      setFrameKey((frameKey) => frameKey + 1);
+    }, 5000);
+    const interval = setInterval(() => {
+      setFrameKey((frameKey) => frameKey + 1);
+    }, 40000);
     // edit();
 
     return () => {
-      let req = JSON.stringify({ userID: uid, isLive: "false" });
-      fetch(API + "/live", {
-        method: "post",
-        body: req,
-        headers: { "Content-Type": "application/json" },
-      }).then((res) => {
-        return res.json();
-      });
+      // let req = JSON.stringify({ userID: uid, isLive: "false" });
+      // fetch(API + "/live", {
+      //   method: "post",
+      //   body: req,
+      //   headers: { "Content-Type": "application/json" },
+      // }).then((res) => {
+      //   return res.json();
+      // });
     };
   }, []);
 
