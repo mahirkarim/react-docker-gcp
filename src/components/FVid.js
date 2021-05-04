@@ -74,7 +74,7 @@ export default function FVid() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [frameKey, setFrameKey] = useState(0);
-  const [refresh, setRefresh] = useState(45000);
+  const [refresh, setRefresh] = useState(200000);
 
   const profiles = () => {
     history.push("/profile");
@@ -109,10 +109,10 @@ export default function FVid() {
       });
     setTimeout(() => {
       setFrameKey((frameKey) => frameKey + 1);
-    }, 5000);
+    }, 1000);
     const interval = setInterval(() => {
       setFrameKey((frameKey) => frameKey + 1);
-    }, 40000);
+    }, refresh);
     // edit();
 
     return () => {
