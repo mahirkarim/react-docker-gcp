@@ -120,7 +120,7 @@ export default function Vid() {
     const interval = setInterval(() => {
       setFrameKey((frameKey) => frameKey + 1);
       if (refresh <= 1000) {
-        setRefresh(refresh + 2000);
+        setRefresh(2000);
       } else {
         setRefresh(refresh + 30000);
       }
