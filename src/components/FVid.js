@@ -73,6 +73,8 @@ export default function FVid() {
   const [profile, setProfile] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [frameKey, setFrameKey] = useState(0);
+  const [refresh, setRefresh] = useState(45000);
 
   const profiles = () => {
     history.push("/profile");
@@ -185,6 +187,7 @@ export default function FVid() {
         </AppBar>
       </div>
       <iframe
+        key={frameKey}
         src={`https://vid.mergehealth.us/${uid}`}
         name="room"
         border="0"
