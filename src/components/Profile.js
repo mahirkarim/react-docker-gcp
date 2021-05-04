@@ -344,15 +344,6 @@ export default function Profile() {
                     </h5>
                   );
                 })}
-
-                <div>
-                  <Link
-                    href={`https://www.mergehealth.us/addFriends`}
-                    // onClick={preventDefault}
-                  >
-                    <h7>Add Friends</h7>
-                  </Link>
-                </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
