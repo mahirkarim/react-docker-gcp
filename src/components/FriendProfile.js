@@ -229,7 +229,7 @@ export default function FriendProfile() {
               <div style={{}}>
                 <div>
                   <Grid item xs={6}>
-                    <Link href={`http://localhost:3000/profile`}>
+                    <Link href={`https://www.mergehealth.us/profile`}>
                       <h7>Back</h7>
                     </Link>
                   </Grid>
