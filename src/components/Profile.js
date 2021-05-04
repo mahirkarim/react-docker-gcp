@@ -31,6 +31,7 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import Edit from "./Edit";
+import AddF from "./AddF";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -366,6 +367,10 @@ export default function Profile() {
         <img className="item" src={noprof} />
         <img className="item" src={noprof} /> */}
         </div>
+        <Paper className={classes.pageContent}>
+          {/* <EditE /> */}
+          <AddF />
+        </Paper>
       </div>
     </Container>
   );

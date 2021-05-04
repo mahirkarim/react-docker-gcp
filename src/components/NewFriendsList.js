@@ -26,6 +26,7 @@ import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import API from "./API";
+import DateFnsUtils from "@date-io/date-fns";
 
 function Copyright() {
   const classes = useStyles();
@@ -80,6 +81,7 @@ export default function NewFriendsList() {
   const log = 0;
   const [users, setUsers] = useState([]);
   const [online, setOnline] = useState([]);
+  const [onlineReverse, setReverse] = useState([]);
   const history = useHistory();
   const [auth, setAuth] = React.useState(true);
 
@@ -97,7 +99,7 @@ export default function NewFriendsList() {
     setAuth(event.target.checked);
   };
 
-  useEffect(() => {
+  const getData = () => {
     fetch(API + "/users", {
       method: "get",
       headers: { "Content-Type": "application/json" },
@@ -117,7 +119,15 @@ export default function NewFriendsList() {
       })
       .then((json) => {
         setOnline(json);
+        setReverse(json.slice(-10).reverse());
       });
+  };
+
+  useEffect(() => {
+    getData();
+    const interval = setInterval(() => {
+      getData();
+    }, 20000);
     return () => {
       // let req = JSON.stringify({ userID: uid, isLive: "true" });
       // fetch("https://vid.mergehealth.us/api/live", {
@@ -244,16 +254,32 @@ export default function NewFriendsList() {
                 <Card>
                   <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                      Friends Online
+                      Recent Activity
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                      {online.map((user) => {
+                      {onlineReverse.map((user) => {
+                        var parts = user.timestamp.split("T");
+                        var time = parts[1].split(":");
+                        var ampm = "am";
+                        time[0] = time[0] - 5;
+                        if (time[0] > 11) {
+                          time[0] = time[0] % 12;
+                          ampm = "pm";
+                        }
                         return (
-                          <Typography component="h1" variant="h6">
-                            {user.name}
-                          </Typography>
+                          <Container>
+                            <Typography component="h6" variant="h7">
+                              {user.name}
+                            </Typography>
+                            <Typography component="h6" variant="h7">
+                              {time[0] + ":" + time[1] + " " + ampm + " CDT"}
+                            </Typography>
+                            <div>
+                              <h1> </h1>
+                            </div>
+                          </Container>
                         );
                         // return <a>{user.name}</a>;
                       })}

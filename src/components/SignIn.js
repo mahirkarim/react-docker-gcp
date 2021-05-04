@@ -15,6 +15,7 @@ import { CardMedia } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import pic from "../assets/img/image2.jpeg";
 import { useHistory } from "react-router-dom";
+import API from "./API";
 
 function Copyright() {
   return (
@@ -73,7 +74,7 @@ export default function SignIn() {
 
   const handleClick = () => {
     let req = JSON.stringify({ password: password, email: email });
-    fetch("https://vid.mergehealth.us/api/signin", {
+    fetch(API + "/signin", {
       method: "post",
       body: req,
       headers: { "Content-Type": "application/json" },

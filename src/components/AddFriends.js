@@ -31,6 +31,7 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import AddF from "./AddF";
+import EditE from "./EditE";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +59,6 @@ function HomeIcon(props) {
 }
 
 export default function AddFriends() {
-  localStorage.setItem("addStep", "");
   const history = useHistory();
   const [profile, setProfile] = useState([]);
   const uid = localStorage.getItem("uid");
@@ -68,7 +68,6 @@ export default function AddFriends() {
   const [evening, setEvening] = useState([]);
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
-  const [editT, setEditT] = useState(0);
 
   const home = () => {
     history.push("/online");
@@ -86,14 +85,6 @@ export default function AddFriends() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  //   const edit = () => {
-  //     if (editT == 0) {
-  //       return;
-  //     } else if (editT == 1) {
-  //       return <Edit></Edit>;
-  //     }
-  //   };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -121,31 +112,14 @@ export default function AddFriends() {
     fetch("https://vid.mergehealth.us/api/users", {
       method: "get",
       headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setUsers(json);
-      });
+    }).then((res) => {
+      return res.json();
+    });
 
     // edit();
 
-    return () => {
-      //   let req = JSON.stringify({ userID: uid });
-      //   fetch("http://localhost:3002/api/profile", {
-      //     method: "post",
-      //     body: req,
-      //     headers: { "Content-Type": "application/json" },
-      //   })
-      //     .then((res) => {
-      //       return res.json();
-      //     })
-      //     .then((json) => {
-      //       setProfile(json);
-      //     });
-    };
-  }, [editT]);
+    return () => {};
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -310,7 +284,7 @@ export default function AddFriends() {
                       <Link
                         key={index}
                         onClick={() => friendProf(value)}
-                        href={`http://localhost:3000/friendProf/${value}`}
+                        // href={`http://localhost:3000/friendProf/${value}`}
                       >
                         {value}
                       </Link>

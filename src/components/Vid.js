@@ -73,6 +73,7 @@ export default function Vid() {
   const [profile, setProfile] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [frameKey, setFrameKey] = useState(0);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -86,6 +87,14 @@ export default function Vid() {
   };
 
   const home = () => {
+    let req = JSON.stringify({ userID: uid, isLive: "false" });
+    fetch(API + "/live", {
+      method: "post",
+      body: req,
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      return res.json();
+    });
     history.push("/online");
   };
   const profiles = () => {
@@ -105,19 +114,12 @@ export default function Vid() {
       .then((json) => {
         setProfile(json);
       });
-
+    // window.location.reload(false);
     // edit();
-
-    return () => {
-      let req = JSON.stringify({ userID: uid, isLive: "false" });
-      fetch(API + "/live", {
-        method: "post",
-        body: req,
-        headers: { "Content-Type": "application/json" },
-      }).then((res) => {
-        return res.json();
-      });
-    };
+    const interval = setInterval(() => {
+      setFrameKey((frameKey) => frameKey + 1);
+    }, 5000);
+    return () => {};
   }, []);
 
   return (
@@ -180,6 +182,7 @@ export default function Vid() {
         </AppBar>
       </div>
       <iframe
+        key={frameKey}
         src={`https://vid.mergehealth.us/${uid}`}
         name="room"
         border="0"

@@ -15,7 +15,6 @@ import FriendsList from "./components/FriendsList.js";
 import NewFriendsList from "./components/NewFriendsList.js";
 import { getFromStorage, setInStorage } from "./utils/storage";
 import Profile from "./components/Profile.js";
-import Friends from "./components/Friends.js";
 import Edit from "./components/Edit.js";
 import EditProfile from "./components/EditProfile.js";
 import EditMorning from "./components/EditMorning.js";

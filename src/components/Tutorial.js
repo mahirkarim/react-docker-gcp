@@ -87,11 +87,11 @@ export default function Tutorial() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h3">
-            How to use:
+            How to use
           </Typography>
           <Typography component="h1" variant="h6"></Typography>
           <Box mt={2}>
-            <Typography component="h6" variant="h6">
+            {/* <Typography component="h6" variant="h6">
               The Merge Health web application currently shows you which of your
               friends have similar schedules and creates secure video chat rooms
               to join those friends in their morning and bedtime routines. When
@@ -104,6 +104,26 @@ export default function Tutorial() {
               your friends online will be able to join you. NEW: Click on the
               icon in the top right to go to your profile and update your
               routines. Add friends in the "following" dropdown menu.
+            </Typography> */}
+            <Typography component="h6" variant="h6">
+              This app allows you to check in on your friends' daily routines
+              through video chat rooms:
+            </Typography>
+            <Typography component="h6" variant="h6">
+              - The home screen allows you to see who has recently logged on and
+              which of your friends are currently getting ready
+            </Typography>
+            <Typography component="h6" variant="h6">
+              - To join a friend, simply expand the "friends live" dropdown and
+              click on the friend's name whose video room you wish to join
+            </Typography>
+            <Typography component="h6" variant="h6">
+              - To start your own room, click "Go Live"
+            </Typography>
+            <Typography component="h6" variant="h6">
+              - The profile icon in the top navbar will allow you to navigate to
+              your profile, where you can enter your usual routine and search
+              for friends to follow
             </Typography>
           </Box>
 

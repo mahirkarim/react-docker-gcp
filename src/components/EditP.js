@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 const genderItems = [
   { id: "male", title: "Male" },
   { id: "female", title: "Female" },
+  { id: "nonbinary", title: "Nonbinary" },
+  { id: "agender", title: "Agender" },
   { id: "other", title: "Other" },
 ];
 
@@ -18,6 +20,7 @@ const initialFValues = {
   city: "",
   gender: "",
   birthday: "",
+  ethnicity: "",
 };
 
 export default function Edit() {
@@ -36,6 +39,7 @@ export default function Edit() {
       phone: values.phone,
       birthday: values.birthday,
       gender: values.gender,
+      ethnicity: values.ethnicity,
     });
     fetch("https://vid.mergehealth.us/api/editprofile", {
       method: "post",
@@ -78,6 +82,7 @@ export default function Edit() {
           phone: json.phone,
           birthday: json.birthday,
           gender: json.gender,
+          ethnicity: json.ethnicity,
         });
       });
   }, []); //the bracket calls use effect whenever what's in it changes
@@ -110,18 +115,24 @@ export default function Edit() {
             value={values.city}
             onChange={handleInputChange}
           />
-          {/* <Controls.RadioGroup
-            name="gender"
-            label="Gender"
-            value={values.gender}
-            onChange={handleInputChange}
-            items={genderItems}
-          /> */}
           <Controls.DatePicker
             name="birthday"
             label="Birthday"
             value={values.birthday}
             onChange={handleInputChange}
+          />
+          <Controls.Input
+            label="Ethnicity"
+            name="ethnicity"
+            value={values.ethnicity}
+            onChange={handleInputChange}
+          />
+          <Controls.RadioGroup
+            name="gender"
+            label="Gender"
+            value={values.gender}
+            onChange={handleInputChange}
+            items={genderItems}
           />
           <div>
             <Controls.Button

@@ -31,6 +31,7 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import EditE from "./EditE";
+import AddF from "./AddF";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -309,6 +310,7 @@ export default function EditEvening() {
         </div>
         <Paper className={classes.pageContent}>
           <EditE />
+          {/* <AddF /> */}
         </Paper>
       </div>
     </Container>
