@@ -74,7 +74,7 @@ export default function Vid() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [frameKey, setFrameKey] = useState(0);
-  const [refresh, setRefresh] = useState(2000);
+  const [refresh, setRefresh] = useState(5000);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -119,11 +119,8 @@ export default function Vid() {
     // edit();
     const interval = setInterval(() => {
       setFrameKey((frameKey) => frameKey + 1);
-      if (refresh <= 1000) {
-        setRefresh(2000);
-      } else {
-        setRefresh((refresh) => refresh + 30000);
-      }
+      clearInterval(interval);
+      setRefresh((refresh) => refresh + 10000);
     }, refresh);
     return () => {};
   }, []);
