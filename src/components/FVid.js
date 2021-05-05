@@ -74,7 +74,7 @@ export default function FVid() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [frameKey, setFrameKey] = useState(0);
-  const [refresh, setRefresh] = useState(200000);
+  const [refresh, setRefresh] = useState(2000000);
 
   const profiles = () => {
     history.push("/profile");
